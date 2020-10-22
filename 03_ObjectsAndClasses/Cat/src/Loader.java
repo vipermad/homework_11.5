@@ -36,6 +36,12 @@ public class Loader
         }
         System.out.println("Barsik status: " + barsik.getStatus());
 
+        //проверяем работу метода "сходить в туалет" в комплексе с массой съеденной еды.
+        leo.feed(150.0);
+        leo.pee();
+        leo.pee();
+        leo.pee();
+        System.out.println(leo.getEatMass());
     }
 
 }
