@@ -1,9 +1,8 @@
 import org.w3c.dom.ls.LSOutput;
+
 //homework done
-public class Loader
-{
-    public static void main(String[] args)
-    {
+public class Loader {
+    public static void main(String[] args) {
         Cat cat = new Cat();
         Cat barsik = new Cat();
         Cat moris = new Cat();
@@ -11,6 +10,7 @@ public class Loader
         Cat tiger = new Cat();
         Cat richard = new Cat();
         Cat leo = new Cat();
+        Cat musay = new Cat();
 
         //кормим кошечек
         cat.feed(1000.0);
@@ -23,15 +23,13 @@ public class Loader
         System.out.println("Weight tiger: " + tiger.getWeight() + " g.");
 
         //перекармливаем кошку до взрыва.
-        while(cat.getStatus() != "Exploded")
-        {
+        while (cat.isAlive) {
             cat.feed(1000.0);
         }
-        System.out.println("Cat status: "+ cat.getStatus());
+        System.out.println("Cat status: " + cat.getStatus());
 
         //Замяукаем кошку
-        while (barsik.getStatus() != "Dead")
-        {
+        while (barsik.isAlive) {
             barsik.meow();
         }
         System.out.println("Barsik status: " + barsik.getStatus());
@@ -42,6 +40,9 @@ public class Loader
         leo.pee();
         leo.pee();
         System.out.println(leo.getEatMass());
+
+        //проверяем количество оставшихся в живых кошек
+        System.out.println("В живых осталось только: " + Cat.getCount() + " котов");
     }
 
 }
