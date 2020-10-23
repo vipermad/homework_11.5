@@ -1,9 +1,22 @@
-
-public class Loader
-{
-    public static void main(String[] args)
+public class Loader {
+    private static Cat getKitten(String name)
     {
+        return new Cat(name, 1100.0);
+    }
+    public static void main(String[] args) {
         Cat cat = new Cat();
+        Cat barsik = new Cat();
+        Cat moris = new Cat();
+        Cat kitiket = new Cat();
+        Cat tiger = new Cat();
+        Cat richard = new Cat();
+        Cat leo = new Cat();
+        Cat musay = new Cat();
+
+        //кормим кошечек
+        cat.feed(1000.0);
+        barsik.feed(500.0);
+        tiger.feed(1500.0);
 
         //получаем их вес.
         System.out.println("Weight cat: " + cat.getWeight() + " g.");

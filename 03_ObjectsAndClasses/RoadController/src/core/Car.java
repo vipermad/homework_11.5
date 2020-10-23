@@ -7,7 +7,6 @@ public class Car {
     public boolean hasVehicle;
     public boolean isSpecial;
 
-    
     public String getNumber() {
         return number;
     }
