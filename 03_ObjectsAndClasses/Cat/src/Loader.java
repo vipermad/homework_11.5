@@ -2,6 +2,10 @@ import org.w3c.dom.ls.LSOutput;
 
 //homework done
 public class Loader {
+    private static Cat getKitten(String name)
+    {
+        return new Cat(name, 1100.0);
+    }
     public static void main(String[] args) {
         Cat cat = new Cat();
         Cat barsik = new Cat();
@@ -43,6 +47,12 @@ public class Loader {
 
         //проверяем количество оставшихся в живых кошек
         System.out.println("В живых осталось только: " + Cat.getCount() + " котов");
+
+        //создаем котов используя метод и сразу выводим их вес в консоль
+        System.out.println(getKitten("vova").getWeight());
+        System.out.println(getKitten("lesli").getWeight());
+        System.out.println(getKitten("chelsi").getWeight());
+
     }
 
 }

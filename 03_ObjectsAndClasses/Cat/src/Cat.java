@@ -2,6 +2,7 @@
 public class Cat {
     private double originWeight;
     private double weight;
+    private String name;
 
     private static final double minWeight = 1000.0;
     private static final double maxWeight = 9000.0;
@@ -31,6 +32,23 @@ public class Cat {
         eatMass = 0;
         count = count + 1;
         isAlive = true;
+    }
+
+    public Cat(double weight)
+    {
+        this();
+        this.weight = weight;
+    }
+    public Cat(String name)
+    {
+        this();
+        this.name = name;
+    }
+    public  Cat(String name, double weight)
+    {
+        this();
+        this.name = name;
+        this.weight = weight;
     }
 
     public void meow() {
