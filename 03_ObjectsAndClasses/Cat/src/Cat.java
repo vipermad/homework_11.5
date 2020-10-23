@@ -3,8 +3,9 @@ public class Cat {
     private double originWeight;
     private double weight;
 
-    private double minWeight;
-    private double maxWeight;
+    private static final double minWeight = 1000.0;
+    private static final double maxWeight = 9000.0;
+    private static final int eye = 2;
     private double eatMass;
 
     private static int count;
@@ -27,8 +28,6 @@ public class Cat {
     public Cat() {
         weight = 1500.0 + 3000.0 * Math.random();
         originWeight = weight;
-        minWeight = 1000.0;
-        maxWeight = 9000.0;
         eatMass = 0;
         count = count + 1;
         isAlive = true;
