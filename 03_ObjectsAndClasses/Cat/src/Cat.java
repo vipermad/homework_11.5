@@ -7,10 +7,19 @@ public class Cat {
     private static final double minWeight = 1000.0;
     private static final double maxWeight = 9000.0;
     private static final int eye = 2;
+    private String catColor;
     private double eatMass;
 
     private static int count;
     public boolean isAlive;
+
+    public String getCatColor() {
+        return catColor;
+    }
+
+    public void setCatColor(String catColor) {
+        this.catColor = catColor;
+    }
 
     public static int getCount() {
         return count;

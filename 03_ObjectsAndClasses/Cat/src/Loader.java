@@ -53,6 +53,9 @@ public class Loader {
         System.out.println(getKitten("lesli").getWeight());
         System.out.println(getKitten("chelsi").getWeight());
 
+        //Задаем коту цвет и проверяем(выводим его в консоль)
+        cat.setCatColor("Black");
+        System.out.println(cat.getCatColor());
     }
 
 }
