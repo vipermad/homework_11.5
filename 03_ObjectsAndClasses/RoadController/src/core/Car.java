@@ -35,7 +35,7 @@ public class Car {
         this.hasVehicle = hasVehicle;
     }
 
-    public boolean getHasVehicle() {
+    public boolean HasVehicle() {
         return hasVehicle;
     }
 
@@ -46,6 +46,8 @@ public class Car {
     public void setSpecial(boolean special) {
         isSpecial = special;
     }
+
+    public boolean isHasVehicle() { return hasVehicle; }
 
     public String toString() {
         String special = isSpecial ? "СПЕЦТРАНСПОРТ " : "";

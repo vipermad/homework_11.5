@@ -1,7 +1,7 @@
 public class Loader {
     private static Cat getKitten(String name)
     {
-        return new Cat(name, 1100.0);
+        return new Cat(name);
     }
     public static void main(String[] args) {
         Cat cat = new Cat();
@@ -12,7 +12,7 @@ public class Loader {
         Cat richard = new Cat();
         Cat leo = new Cat();
         Cat musay = new Cat();
-
+        Cat rich = new Cat(1.0);
         //кормим кошечек
         cat.feed(1000.0);
         barsik.feed(500.0);
@@ -24,13 +24,13 @@ public class Loader {
         System.out.println("Weight tiger: " + tiger.getWeight() + " g.");
 
         //перекармливаем кошку до взрыва.
-        while (cat.isAlive) {
+        while (cat.isAlive()) {
             cat.feed(1000.0);
         }
         System.out.println("Cat status: " + cat.getStatus());
 
         //Замяукаем кошку
-        while (barsik.isAlive) {
+        while (barsik.isAlive()) {
             barsik.meow();
         }
         System.out.println("Barsik status: " + barsik.getStatus());
@@ -44,14 +44,13 @@ public class Loader {
 
         //проверяем количество оставшихся в живых кошек
         System.out.println("В живых осталось только: " + Cat.getCount() + " котов");
-
         //создаем котов используя метод и сразу выводим их вес в консоль
         System.out.println(getKitten("vova").getWeight());
         System.out.println(getKitten("lesli").getWeight());
         System.out.println(getKitten("chelsi").getWeight());
-
+        System.out.println(rich.getWeight());
         //Задаем коту цвет и проверяем(выводим его в консоль)
-        cat.setCatColor("Black");
+        cat.setCatColor(CatColor.FOXY);
         System.out.println(cat.getCatColor());
     }
 
