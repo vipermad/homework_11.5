@@ -1,3 +1,5 @@
+import com.sun.nio.sctp.SctpSocketOption;
+
 public class Loader {
     private static Cat getKitten(String name)
     {
@@ -52,6 +54,14 @@ public class Loader {
         //Задаем коту цвет и проверяем(выводим его в консоль)
         cat.setCatColor(CatColor.FOXY);
         System.out.println(cat.getCatColor());
+
+        //Проверяем работу копирования кота.
+        System.out.println(cat.getWeight());
+        Cat vasya = cat.makeTwin();
+        System.out.println(cat.getWeight());
+        System.out.println(vasya.getWeight());
+
+
     }
 
 }

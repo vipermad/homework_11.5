@@ -113,4 +113,18 @@ public class Cat {
             getStatus();
         }
     }
+    //Копирование кота.
+    public Cat makeTwin()
+    {
+        Cat catTwin = new Cat(this.weight);
+        catTwin.originWeight = this.originWeight;
+        catTwin.catColor = this.catColor;
+        catTwin.name = this.name;
+        catTwin.eatMass = this.eatMass;
+        return catTwin;
+    }
+    public static Cat copyCat(Cat newCat)
+    {
+        return newCat.makeTwin();
+    }
 }
