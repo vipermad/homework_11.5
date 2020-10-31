@@ -21,6 +21,15 @@ public class Main {
 
   public static int sumDigits(Integer number) {
     //@TODO: write code here and delete TODO line
-    return 0;
+    if (number != null) {
+      int sumNumbers = 0;
+      for (int i = 0; i < number.toString().length(); i++) {
+        char symbol = number.toString().charAt(i);
+        sumNumbers += Integer.parseInt(String.valueOf(symbol));
+      }
+      return sumNumbers;
+    } else {
+      return -1;
+    }
   }
 }
