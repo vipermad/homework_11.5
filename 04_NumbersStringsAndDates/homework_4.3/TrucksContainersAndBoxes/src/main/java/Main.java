@@ -22,26 +22,26 @@ public class Main {
     }
     for (int i = 1; i != boxes + 1; i++) {
       if (flagFirstStart) {
-        System.out.printf("Грузовик: %d\n", truck);
+        System.out.printf("Грузовик: %d%n", truck);
         truck++;
-        System.out.printf("\tКонтейнер: %d\n", container);
+        System.out.printf("\tКонтейнер: %d%n", container);
         container++;
         flagFirstStart = false;
       }
       if ((i - 1) % VOLUME_TRUCK == 0 && i != 1) {
-        System.out.printf("Грузовик: %d\n", truck);
+        System.out.printf("Грузовик: %d%n", truck);
         truck++;
       }
       if ((i - 1) % VOLUME_CONTAINER == 0 && i != 1) {
-        System.out.printf("\tКонтейнер: %d\n", container);
+        System.out.printf("\tКонтейнер: %d%n", container);
         container++;
       }
-      System.out.printf("\t\tЯщик: %d\n", countBox);
+      System.out.printf("\t\tЯщик: %d%n", countBox);
       countBox++;
     }
 
 //    System.out.println("Необходимо: \nгрузовиков - " + needTruck + " шт." + "\nконтейнеров - " + needContainer + " шт.");
-    System.out.printf("Необходимо:\nгрузовиков - %d шт.\nконтейнеров - %d шт.", needTruck,
+    System.out.printf("Необходимо:%nгрузовиков - %d шт.%nконтейнеров - %d шт.", needTruck,
         needContainer);
 
     // TODO: вывести в консоль коробки разложенные по грузовикам и контейнерам
