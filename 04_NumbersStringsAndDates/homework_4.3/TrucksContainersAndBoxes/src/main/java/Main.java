@@ -20,27 +20,29 @@ public class Main {
       container++;
       countBox++;
     }
-    for (int i = 1; i != boxes+1; i++) {
-      if (flagFirstStart){
-        System.out.println("Грузовик: " + truck);
+    for (int i = 1; i != boxes + 1; i++) {
+      if (flagFirstStart) {
+        System.out.printf("Грузовик: %d\n", truck);
         truck++;
-        System.out.println("\tКонтейнер: " + container);
+        System.out.printf("\tКонтейнер: %d\n", container);
         container++;
         flagFirstStart = false;
       }
-      if ((i-1) % VOLUME_TRUCK == 0 && i != 1) {
-        System.out.println("Грузовик: " + truck);
+      if ((i - 1) % VOLUME_TRUCK == 0 && i != 1) {
+        System.out.printf("Грузовик: %d\n", truck);
         truck++;
       }
-      if ((i-1) % VOLUME_CONTAINER == 0 && i != 1) {
-        System.out.println("\tКонтейнер: " + container);
+      if ((i - 1) % VOLUME_CONTAINER == 0 && i != 1) {
+        System.out.printf("\tКонтейнер: %d\n", container);
         container++;
       }
-      System.out.println("\t\tЯщик: " + countBox);
+      System.out.printf("\t\tЯщик: %d\n", countBox);
       countBox++;
     }
 
-    System.out.println("Необходимо: \nгрузовиков - " + needTruck + " шт." + "\nконтейнеров - " + needContainer + " шт.");
+//    System.out.println("Необходимо: \nгрузовиков - " + needTruck + " шт." + "\nконтейнеров - " + needContainer + " шт.");
+    System.out.printf("Необходимо:\nгрузовиков - %d шт.\nконтейнеров - %d шт.", needTruck,
+        needContainer);
 
     // TODO: вывести в консоль коробки разложенные по грузовикам и контейнерам
     // пример вывода при вводе 2
