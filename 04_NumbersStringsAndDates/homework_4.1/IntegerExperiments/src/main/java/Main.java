@@ -25,7 +25,8 @@ public class Main {
       int sumNumbers = 0;
       for (int i = 0; i < number.toString().length(); i++) {
         char symbol = number.toString().charAt(i);
-        sumNumbers += Integer.parseInt(String.valueOf(symbol));
+        //sumNumbers += Integer.parseInt(String.valueOf(symbol));
+        sumNumbers += Character.digit(symbol, 10);
       }
       return sumNumbers;
     } else {
