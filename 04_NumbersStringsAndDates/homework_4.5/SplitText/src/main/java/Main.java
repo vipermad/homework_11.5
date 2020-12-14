@@ -6,7 +6,8 @@ public class Main {
 
   public static String splitTextInToWords(String text) {
     //TODO реализуйте метод
-    return "";
+    return text.replaceAll("[\n.,;0-9]", "").replaceAll
+        ("[\\s]{2,}", " ").replaceAll("[\s-]", "\n");
   }
 
 }
