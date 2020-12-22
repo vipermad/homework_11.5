@@ -2,9 +2,9 @@ public class Main {
 
   public static void main(String[] args) {
     System.out.println("Max value Double: " + Double.MAX_VALUE);
-    System.out.println("Min value Double: " + Double.MIN_VALUE);
+    System.out.println("Min value Double: " + -Double.MAX_VALUE);
     System.out.println("Max value Float: " + Float.MAX_VALUE);
-    System.out.println("Min value Float: " + Float.MIN_VALUE);
+    System.out.println("Min value Float: " + -Float.MAX_VALUE);
     System.out.println("Max value Byte: " + Byte.MAX_VALUE);
     System.out.println("Min value Byte: " + Byte.MIN_VALUE);
     System.out.println("Max value Int: " + Integer.MAX_VALUE);
