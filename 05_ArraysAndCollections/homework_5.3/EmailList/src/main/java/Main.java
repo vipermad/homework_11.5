@@ -1,7 +1,10 @@
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Main {
-    public static final String WRONG_EMAIL_ANSWER = "Неверный формат email";
+
+    private static EmailList emailList = new EmailList();
     
     /* TODO:
         Пример вывода списка Email, после ввода команды LIST в консоль:
@@ -22,11 +25,19 @@ public class Main {
         
         while (true) {
             String input = scanner.nextLine();
-            if (input.equals("0")) {
+            if (input.equals("0") || input.equals("exit")) {
                 break;
             }
-            
-            //TODO: write code here
+            Pattern patternAdd = Pattern.compile(".*ADD.*", Pattern.CASE_INSENSITIVE);
+            Matcher matcherAdd = patternAdd.matcher(input);
+            Pattern patternList = Pattern.compile(".*LIST.*", Pattern.CASE_INSENSITIVE);
+            Matcher matcherList = patternList.matcher(input);
+            if(matcherAdd.matches()){
+                emailList.add(input.substring(4));
+            }
+            if (matcherList.matches()){
+                emailList.getSortedEmails();
+            }
             
         }
     }

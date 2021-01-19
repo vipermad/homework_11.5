@@ -26,7 +26,6 @@ public class Main {
       Matcher matcherList = patternList.matcher(input);
       if (matcherAdd.matches()) {
         todoList.add(input.substring(4));
-        System.out.println("Мы тут");
       }
       if (matcherEdit.matches()) {
         todoList.edit(input.substring(7),
