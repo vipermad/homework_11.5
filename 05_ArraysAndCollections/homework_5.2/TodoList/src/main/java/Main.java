@@ -21,17 +21,17 @@ public class Main {
               Pattern.CASE_INSENSITIVE);
       Matcher matcher = pattern.matcher(input);
       if (matcher.find()) {
-        if (matcher.group("command").equals("ADD")) {
+        if (matcher.group("command").equalsIgnoreCase("ADD")) {
           todoList.add(matcher.group("text"));
         }
-        if (matcher.group("command").equals("EDIT")) {
+        if (matcher.group("command").equalsIgnoreCase("EDIT")) {
           todoList.edit(matcher.group("text"),
               Integer.parseInt(matcher.group("index").trim()));
         }
-        if (matcher.group("command").equals("DELETE")) {
+        if (matcher.group("command").equalsIgnoreCase("DELETE")) {
           todoList.delete(Integer.parseInt(matcher.group("index").trim()));
         }
-        if (matcher.group("command").equals("LIST")) {
+        if (matcher.group("command").equalsIgnoreCase("LIST")) {
           todoList.getTodos();
         }
       }
