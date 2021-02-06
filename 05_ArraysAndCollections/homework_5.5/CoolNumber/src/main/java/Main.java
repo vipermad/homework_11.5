@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Main {
     /*
     TODO:
@@ -6,7 +9,7 @@ public class Main {
      - проанализоровать полученные данные
      */
 
-    public static void main(String[] args) {
+  public static void main(String[] args) {
 
-    }
+  }
 }

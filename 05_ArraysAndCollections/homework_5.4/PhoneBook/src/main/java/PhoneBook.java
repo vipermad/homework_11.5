@@ -28,7 +28,7 @@ public class PhoneBook {
     }
     return false;
   }
-  private static String greeting = "Введите номер, имя или команду:";
+  public static String greeting = "Введите номер, имя или команду:";
   private static String noName = "Такого имени в телефонной книге нет.";
   private static String noPhone = "Такого номера нет в телефонной книге.";
   Scanner scanner = new Scanner(System.in);
