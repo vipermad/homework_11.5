@@ -1,6 +1,6 @@
 public class BankAccount {
 
-  public double balance = 0;
+  protected double balance = 0;
 
   public double getAmount() {
     if (balance > 0) {
