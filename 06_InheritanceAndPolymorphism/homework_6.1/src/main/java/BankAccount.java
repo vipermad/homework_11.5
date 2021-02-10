@@ -20,7 +20,12 @@ public class BankAccount {
   }
 
   public boolean send(BankAccount receiver, double amount){
-    balance += amount;
-    return true;
+
+    if (balance >= amount){
+      balance -= amount;
+      receiver.balance += amount;
+      return true;
+    }
+    return false;
   }
 }
