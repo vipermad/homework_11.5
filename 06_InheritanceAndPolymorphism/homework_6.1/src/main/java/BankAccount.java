@@ -10,20 +10,22 @@ public class BankAccount {
   }
 
   public void put(double amountToPut) {
-    balance += amountToPut;
+    if (amountToPut>0){
+      balance += amountToPut;
+    }
   }
 
   public void take(double amountToTake) {
-    if (balance>= amountToTake) {
+    if (balance>= amountToTake && amountToTake>0) {
       balance -= amountToTake;
     }
   }
 
   public boolean send(BankAccount receiver, double amount){
 
-    if (balance >= amount){
-      balance -= amount;
-      receiver.balance += amount;
+    if (balance >= amount && amount>0){
+      take(amount);
+      receiver.put(amount);
       return true;
     }
     return false;
