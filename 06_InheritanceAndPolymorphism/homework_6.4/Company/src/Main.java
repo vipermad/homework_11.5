@@ -12,5 +12,8 @@ public class Main {
     company.getTopSalaryStaff(15);
     company.getLowestSalaryStaff(30);
     System.out.println(company.getCountEmployees());
+    System.out.println(company.employeeList.size());
+    System.out.println(company.getIncome());
+    System.out.println(company.income);
   }
 }

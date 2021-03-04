@@ -3,6 +3,7 @@ import Interface.Employee;
 public abstract class Worker implements Employee {
 
   private int Salary = 50_000;
+  private int incomeForCompany = 0;
 
 
   public void setMonthSalary(int monthSalary) {
@@ -19,5 +20,8 @@ public abstract class Worker implements Employee {
   }
   public Worker(int Salary){
     this.Salary = Salary;
+  }
+  public int getIncomeForCompany(){
+    return incomeForCompany;
   }
 }

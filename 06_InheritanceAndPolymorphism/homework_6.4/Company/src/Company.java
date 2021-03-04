@@ -6,11 +6,10 @@ import java.util.List;
 
 public class Company {
 
-  protected static int income = (int) (Math.random()
-      * 100_000_000); // доход от 0 до 9 999 999 рублей
+
   private int countEmployees;
   public List<Employee> employeeList = new ArrayList<>();
-
+  protected int income = getIncomeForCompany();
   public Company(int income) {
     if (income > 0 && countEmployees > 0) {
       this.income = income;
@@ -35,7 +34,7 @@ public class Company {
   }
 
   public List<Employee> getTopSalaryStaff(int count) {
-    if (count > 0) {
+    if (count > 0 && count <= employeeList.size()) {
       Collections
           .sort(employeeList, (y, x) -> Integer.compare(x.getMonthSalary(), y.getMonthSalary()));
       for (int i = 0; i < count; i++) {
@@ -47,7 +46,7 @@ public class Company {
   }
 
   public List<Employee> getLowestSalaryStaff(int count) {
-    if (count > 0) {
+    if (count > 0 && count <= employeeList.size()) {
       Collections
           .sort(employeeList, (x, y) -> Integer.compare(x.getMonthSalary(), y.getMonthSalary()));
       for (int i = 0; i < count; i++) {
@@ -91,5 +90,12 @@ public class Company {
     for (int i = 0; i < employeeList.size(); i++) {
       System.out.println(employeeList.get(i).getPositionName());
     }
+  }
+  private int getIncomeForCompany(){
+    int x = 0;
+    for (int i = 0; i < employeeList.size(); i++) {
+      x = x + employeeList.get(i).getIncomeForCompany();
+    }
+    return x;
   }
 }

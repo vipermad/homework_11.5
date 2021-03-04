@@ -6,7 +6,7 @@ public class TopManager extends Worker {
 
   @Override
   public int getMonthSalary() {
-    if (Company.income > 10_000_000) {
+    if (new Company().income > 10_000_000) {
       return (int) (getSalary() * bonusAtSalary);
     }
     return 0;
