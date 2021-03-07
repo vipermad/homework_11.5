@@ -8,8 +8,8 @@ public class Company {
 
 
   private int countEmployees;
-  public List<Employee> employeeList = new ArrayList<>();
-  protected int income = getIncomeForCompany();
+  private List<Employee> employeeList = new ArrayList<>();
+  private int income;
   public Company(int income) {
     if (income > 0 && countEmployees > 0) {
       this.income = income;
@@ -20,7 +20,8 @@ public class Company {
   }
 
   public int getIncome() {
-    return income;
+    income = getIncomeForCompany();
+    return getIncomeForCompany();
   }
 
   public void setIncome(int income) {

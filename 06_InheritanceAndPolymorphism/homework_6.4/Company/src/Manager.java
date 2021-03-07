@@ -7,7 +7,7 @@ public class Manager extends Worker {
 
   @Override
   public int getMonthSalary() {
-    return (int) ((int) getSalary() * bonusAtInncome + getSalary());
+    return (int) ((int) getIncomeForCompany() * bonusAtInncome + getSalary());
   }
 
   public String getPositionName() {
