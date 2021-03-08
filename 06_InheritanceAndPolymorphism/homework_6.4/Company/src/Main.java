@@ -16,5 +16,6 @@ public class Main {
     company.getLowestSalaryStaff(30);
     System.out.println(company.getIncome());
 
+
   }
 }
