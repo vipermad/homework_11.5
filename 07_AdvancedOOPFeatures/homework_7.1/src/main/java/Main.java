@@ -1,5 +1,6 @@
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class Main {
@@ -12,16 +13,16 @@ public class Main {
   }
 
   public static void sortBySalaryAndAlphabet(List<Employee> staff) {
-    Collections.sort(staff, (o1, o2) ->
-    {
-      int result = o1.getSalary().compareTo(o2.getSalary());
-      if (result!=0){
-        return result;
-      }else{
-        return o1.getName().compareTo(o2.getName());
-      }
-    });
-
+//    Collections.sort(staff, (o1, o2) ->
+//    {
+//      int result = o1.getSalary().compareTo(o2.getSalary());
+//      if (result!=0){
+//        return result;
+//      }else{
+//        return o1.getName().compareTo(o2.getName());
+//      }
+//    });
+    Collections.sort(staff, Comparator.comparing(Employee::getSalary).thenComparing(Employee::getName));
     for (Employee employee : staff) {
       System.out.println(employee);
     }
