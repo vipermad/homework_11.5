@@ -1,4 +1,5 @@
 public class Customer {
+
     private final String name;
     private final String phone;
     private final String email;
