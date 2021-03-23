@@ -98,16 +98,15 @@ public class RouteCalculatorTest extends TestCase {
   @Test
   public void testGetShortestRoute() {
     List<Station> actualRoute = routeCalculator.getShortestRoute
-        (stationIndex.getStation("first_3"), stationIndex.getStation("third_3"));
+        (stationIndex.getStation("first_3"), stationIndex.getStation("second_1"));
     List<Station> expectedRoute = new ArrayList<Station>();
     expectedRoute.add(new Station("first_3",stationIndex.getLine(1)));
     expectedRoute.add(new Station("first_2",stationIndex.getLine(1)));
-    expectedRoute.add(new Station("third_2", stationIndex.getLine(2)));
-    expectedRoute.add(new Station("third_3", stationIndex.getLine(2)));
-    //expectedRoute.add("third_4");
-    //expectedRoute.add("second_2");
-    //expectedRoute.add("second_1");
-    System.out.println(expectedRoute.get(1).equals(actualRoute.get(1)));
+    expectedRoute.add(new Station("third_2", stationIndex.getLine(3)));
+    expectedRoute.add(new Station("third_3", stationIndex.getLine(3)));
+    expectedRoute.add(new Station("third_4", stationIndex.getLine(3)));
+    expectedRoute.add(new Station("second_2", stationIndex.getLine(2)));
+    expectedRoute.add(new Station("second_1", stationIndex.getLine(2)));
     assertEquals(expectedRoute, actualRoute);
   }
 
