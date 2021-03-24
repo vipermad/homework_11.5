@@ -96,7 +96,7 @@ public class RouteCalculatorTest extends TestCase {
   }
 
   @Test
-  public void testGetShortestRoute() {
+  public void testGetShortestRoute(){
     List<Station> actualRoute = routeCalculator.getShortestRoute
         (stationIndex.getStation("first_3"), stationIndex.getStation("second_1"));
     List<Station> expectedRoute = new ArrayList<Station>();
