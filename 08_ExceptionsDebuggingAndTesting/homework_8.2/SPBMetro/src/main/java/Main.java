@@ -72,7 +72,7 @@ public class Main {
         logger.info("Введена станция: " + line);
         return station;
       }
-      logger.debug("Станция " + line + "не найдена");
+      logger.warn("Станция " + line + "не найдена");
       System.out.println("Станция не найдена :(");
     }
   }
