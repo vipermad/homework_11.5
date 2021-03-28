@@ -1,33 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration status="WARN">
-<appenders>
+  <appenders>
 
-  <File name="SearchFile" fileName="logs/search.log">
-    <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
-    <Filters>
-      <ThresholdFilter level="warn" onMatch="DENY" onMismatch="NEUTRAL"/>
-      <ThresholdFilter level="error" onMatch="DENY" onMismatch="NEUTRAL"/>
-    </Filters>
-  </File>
+    <File name="SearchFile" fileName="logs/search.log">
+      <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+      <Filters>
+        <MarkerFilter marker="INFO" onMatch="ACCEPT" onMismatch="DENY"/>
+      </Filters>
+    </File>
 
-  <File name="InputErrors" fileName="logs/input_errors.log">
-    <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
-    <Filters>
-      <ThresholdFilter level="error" onMatch="DENY" onMismatch="NEUTRAL"/>
-    </Filters>
-  </File>
+    <File name="InputErrors" fileName="logs/input_errors.log">
+      <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+      <Filters>
+        <MarkerFilter marker="ERROR" onMatch="ACCEPT" onMismatch="DENY"/>
+      </Filters>
+    </File>
 
-  <File name="Exceptions" fileName="logs/exceptions.log">
-    <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
-  </File>
+    <File name="Exceptions" fileName="logs/exceptions.log">
+      <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+      <Filters>
+        <MarkerFilter marker="EX" onMatch="ACCEPT" onMismatch="DENY"/>
+      </Filters>
+    </File>
 
-</appenders>
+  </appenders>
 
-<loggers>
-  <root level="info">
-    <appender-ref ref="SearchFile" level="info"/>
-    <appender-ref ref="InputErrors" level="warn"/>
-    <appender-ref ref="Exceptions" level="error"/>
-  </root>
-</loggers>
+  <loggers>
+    <root level="info">
+      <appender-ref ref="SearchFile" level="info"/>
+      <appender-ref ref="InputErrors" level="info"/>
+      <appender-ref ref="Exceptions" level="info"/>
+    </root>
+  </loggers>
 </configuration>

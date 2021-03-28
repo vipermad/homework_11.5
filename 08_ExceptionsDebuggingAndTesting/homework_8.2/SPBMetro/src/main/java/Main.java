@@ -1,7 +1,11 @@
 import core.Line;
 import core.Station;
+import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.Marker;
+import org.apache.logging.log4j.MarkerManager;
+import org.apache.logging.log4j.core.LogEvent;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -16,13 +20,16 @@ public class Main {
 
   private static final String DATA_FILE = "src/main/resources/map.json";
   private static Scanner scanner;
-  private static Logger logger;
-
+  private static Logger logger = LogManager.getLogger(Main.class.getName());
   private static StationIndex stationIndex;
+
+  private static final Marker INFO_MARKER = MarkerManager.getMarker("INFO");
+  private static final Marker ERROR_MARKER = MarkerManager.getMarker("ERROR");
+  private static final Marker EX_MARKER = MarkerManager.getMarker("EX");
+
 
   public static void main(String[] args) {
     RouteCalculator calculator = getRouteCalculator();
-    logger = LogManager.getLogger();
     System.out.println("Программа расчёта маршрутов метрополитена Санкт-Петербурга\n");
     scanner = new Scanner(System.in);
     for (; ; ) {
@@ -36,7 +43,7 @@ public class Main {
         System.out.println("Длительность: " +
             RouteCalculator.calculateDuration(route) + " минут");
       } catch (Exception e) {
-        logger.error(e.getMessage());
+        logger.info(EX_MARKER, e.getMessage());
       }
     }
   }
@@ -69,10 +76,10 @@ public class Main {
       String line = scanner.nextLine().trim();
       Station station = stationIndex.getStation(line);
       if (station != null) {
-        logger.info("Введена станция: " + line);
+        logger.info(INFO_MARKER, "Введена станция: " + line);
         return station;
       }
-      logger.warn("Станция " + line + "не найдена");
+      logger.info(ERROR_MARKER, "Станция: " + line + " не найдена");
       System.out.println("Станция не найдена :(");
     }
   }
