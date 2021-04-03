@@ -3,59 +3,39 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.nio.file.Files;
+import java.nio.file.NotDirectoryException;
+import java.text.DecimalFormat;
 
 public class FileUtils {
 
-  private static final int KB = 1024;
-  private static final long MB = 1024 * 1024;
-  private static final long GB = 1024 * 1024 * 1024;
-  private static boolean kbWeight = false;
-  private static boolean mbWeight = false;
-  private static boolean gbWeight = false;
 
-
-  public static double calculateFolderSize(String path) throws IOException {
-    long size = Files.walk(new File(path).toPath())
-        .map(f -> f.toFile())
-        .filter(f -> f.isFile())
-        .mapToLong(f -> f.length()).sum();
-
-    if (size<KB){
-      kbWeight = false;
-      mbWeight = false;
-      gbWeight = false;
-    }
-    if (size > KB && size < MB) {
-      kbWeight = true;
-      mbWeight = false;
-      gbWeight = false;
-      BigDecimal result = BigDecimal.valueOf(size).divide(BigDecimal.valueOf(KB))
-          .setScale(2, RoundingMode.DOWN);
-      return result.doubleValue();
-
-    }
-    if (size > MB && size < GB) {
-      kbWeight = false;
-      mbWeight = true;
-      gbWeight = false;
-      BigDecimal result = BigDecimal.valueOf(size).divide(BigDecimal.valueOf(MB))
-          .setScale(2, RoundingMode.DOWN);
-      return result.doubleValue();
-    }
-    if (size > GB) {
-      kbWeight = false;
-      mbWeight = false;
-      gbWeight = true;
-      BigDecimal result = BigDecimal.valueOf(size).divide(BigDecimal.valueOf(GB))
-          .setScale(2, RoundingMode.DOWN);
-      return result.doubleValue();
+  public static long calculateFolderSize(String path) throws NotDirectoryException {
+    long size = 0;
+    File f = new File(path);
+    for (File file : f.listFiles()) {
+      if (file.isFile()) {
+        size += file.length();
+      } else {
+        size += calculateFolderSize(file.getAbsolutePath());
+      }
     }
     return size;
   }
-  public static String sizeWeight(){
-    if (kbWeight){return " KB";}
-    if (mbWeight){return " MB";}
-    if (gbWeight){return " GB";}
-    return " byte";
+
+  public static double folderSize(String path) throws IOException {
+    return Files.walk(new File(path).toPath())
+        .map(f -> f.toFile())
+        .filter(f -> f.isFile())
+        .mapToLong(f -> f.length()).sum();
+  }
+
+  public static String nameSize(long size) {
+    if (size <= 0) {
+      return "0";
+    }
+    final String[] units = new String[]{"B", "KB", "MB", "GB", "TB"};
+    int digitGroups = (int) (Math.log10(size) / Math.log10(1024));
+    return new DecimalFormat("#,##0.#").format(size / Math.pow(1024, digitGroups))
+        + " " + units[digitGroups];
   }
 }

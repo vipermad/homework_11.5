@@ -7,7 +7,7 @@ public class Main {
                 Scanner scanner = new Scanner(System.in);
                 String inputLine = scanner.nextLine();
                 System.out.println("Размер папки " + inputLine + " составляет " +
-                    FileUtils.calculateFolderSize(inputLine) + FileUtils.sizeWeight());
+                    FileUtils.nameSize(FileUtils.calculateFolderSize(inputLine)));
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
