@@ -44,7 +44,7 @@ class MySimpleFileVisitor extends SimpleFileVisitor<Path> {
   @Override
   public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
     try {
-      Path targetPath = src.resolve(src.relativize(file));
+      Path targetPath = dest.resolve(src.relativize(file));
       Files.copy(file, targetPath, StandardCopyOption.COPY_ATTRIBUTES, StandardCopyOption.REPLACE_EXISTING);
     } catch (Exception ex) {
       ex.printStackTrace();
