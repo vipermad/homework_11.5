@@ -1,10 +1,10 @@
 import java.nio.file.Files;
-import java.nio.file.NoSuchFileException;
 import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import lombok.Getter;
 import lombok.ToString;
 
@@ -21,9 +21,18 @@ public class Movements{
   private void loadMovementsFromFile(String path) {
     try {
       transactions = new ArrayList<>();
+      Pattern pattern = Pattern.compile("(.*)\"(\\d+,\\d+)\"(.*)", Pattern.MULTILINE);
       List<String> lines = Files.readAllLines(Paths.get(path));
       for (int i = 1; i < lines.size(); i++) {
-        String[] fragments = lines.get(i).split(",", 8);
+        Matcher matcher = pattern.matcher(lines.get(i));
+        String[] fragments;
+        if (matcher.find()){
+          String text =  lines.get(i).replace(matcher.group(2),matcher.group(2).replace(",", "."));
+          fragments = text.split(",");
+        } else {
+          fragments = lines.get(i).split(",");
+        }
+        System.out.println(fragments[7]);
         if (fragments.length != 8) {
           System.out.println("Wrong line: " + lines.get(i));
           continue;
