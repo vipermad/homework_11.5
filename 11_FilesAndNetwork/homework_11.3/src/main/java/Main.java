@@ -1,17 +1,14 @@
-import java.io.IOException;
-import java.nio.file.Files;
+import com.opencsv.CSVReader;
 import java.nio.file.NoSuchFileException;
-import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Main {
 
-  public static final String MOVEMENTS_FILE = "src/test/resources/movementListInteger.csv";
+  public static final String MOVEMENTS_FILE = "src/test/resources/movementList.csv";
 
   public static void main(String[] args) throws NoSuchFileException {
     Movements movements = new Movements(MOVEMENTS_FILE);
     System.out.println(movements.getExpenseSum());
     System.out.println(movements.getIncomeSum());
+
   }
 }
