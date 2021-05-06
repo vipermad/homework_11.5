@@ -1,4 +1,3 @@
-import com.google.gson.annotations.SerializedName;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -6,7 +5,7 @@ public class Line {
 
   private List<String> station = new ArrayList<>();
 
-  public Line(java.util.List<String> station) {
+  public Line(List<String> station) {
     this.station = station;
   }
   public Line() {
