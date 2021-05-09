@@ -1,15 +1,39 @@
-import java.util.LinkedHashMap;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class MskMetro {
-  private Map<String, List<String>> station = new LinkedHashMap<>();
+  public MskMetro(){}
+//  public MskMetro(){
+//
+//  }
 
-  public Map<String, List<String>> getStations() {
-    return station;
+
+  //  private Map<String, List<String>> station = new LinkedHashMap<>();
+//
+//  public Map<String, List<String>> getStations() {
+//    return station;
+//  }
+//
+//  public void setStations(String lines, List<String> stations) {
+//   station.put(lines, stations);
+//  }
+  public int getStationsCountInLine(){
+    System.out.println("мы тут");
+    for(Line names: lines){
+      System.out.println(names.getLineName());
+    }
+    return lines.size();
   }
 
-  public void setStations(String lines, List<String> stations) {
-   station.put(lines, stations);
+  private List<Line> lines = new ArrayList<>();
+
+  public List<Line> getLines() {
+    return lines;
+  }
+
+  public void setLines(String lineName , List<String> lineList) {
+//    System.out.println("Название линии: " + lineName);
+//    System.out.println("Список линий: " + lineList);
+    lines.add(new Line(lineName, lineList));
   }
 }

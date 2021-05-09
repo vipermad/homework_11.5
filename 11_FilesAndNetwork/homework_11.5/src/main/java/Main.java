@@ -1,4 +1,3 @@
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.File;
 import java.io.IOException;
@@ -9,7 +8,9 @@ import org.jsoup.select.Elements;
 
 public class Main {
 
-  public static void main(String[] args) throws JsonProcessingException {
+  private static final String DATA_FILE = "src/main/json.json";
+
+  public static void main(String[] args) {
     try {
       ObjectMapper objectMapper = new ObjectMapper();
       MskMetro mskMetro = new MskMetro();
@@ -19,19 +20,19 @@ public class Main {
       Element root = document.getElementById("metrodata");
       Elements elements = root.select("div[data-depend]");
       for (Element element : elements) {
-        Line lineNumberName = new Line();
+        Line lineName = new Line();
         String lineNumber = element.selectFirst("span[data-line]").attr("data-line");
         Element line = root.selectFirst("div[data-depend-set=\"lines-" + lineNumber + "\"]");
         Elements stantions = line.select("a[data-metrost]").select("span[class=\"name\"]");
+        //lineName.setLineName(lineNumber + " " + element.text());
         for (Element stantion : stantions) {
-          lineNumberName.add(stantion.text());
+          lineName.addStationInList(stantion.text());
         }
-        mskMetro.setStations(lineNumber + " " + element.text(), lineNumberName.getStation());
+        mskMetro.setLines(lineNumber + " " + element.text(), lineName.getStationList());
+        //mskMetro.setLines(lineNumber + " " + element.text(), lineName.getStationList());
       }
 
-      String result = objectMapper.writeValueAsString(mskMetro);
-      String path = "C:\\Users\\Александр\\IdeaProjects\\java_basics\\11_FilesAndNetwork\\homework_11.5\\src\\main\\resources\\json.json";
-      File file = new File(path);
+      File file = new File(DATA_FILE);
       try {
         file.createNewFile();
       } catch (IOException e) {
@@ -39,7 +40,7 @@ public class Main {
       }
       ObjectMapper mapper = new ObjectMapper();
       try {
-        mapper.writeValue(new File(path), mskMetro);
+        mapper.writeValue(new File(DATA_FILE), mskMetro);
       } catch (Exception e) {
         e.printStackTrace();
       }
@@ -47,6 +48,19 @@ public class Main {
       e.printStackTrace();
     }
     //Чтение файла и вывод в консоль количество станций на каждой линии.
+    System.out.println("........................................................");
+
+    GsonParser parser = new GsonParser();
+
+    MskMetro newMskMetro = parser.parse();
+
+    //System.out.println(newMskMetro.getLines().get(0).getLineName());
+    System.out.println(newMskMetro.getStationsCountInLine());
+    System.out.println(newMskMetro.getLines().size());
+
+
+    //System.out.println(newMskMetro.getStationsCountInLine("1 Сокольническая линия"));
+
 
 
   }
