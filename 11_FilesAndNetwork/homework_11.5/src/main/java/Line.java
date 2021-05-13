@@ -9,6 +9,11 @@ public class Line {
   //ПОЛЯ
   @SerializedName("line_name")
   private String lineName;
+
+  public void setStations(List<String> stations) {
+    this.stations = stations;
+  }
+
   private List<String> stations = new ArrayList<>();
 
   //Конструкторы
@@ -20,22 +25,6 @@ public class Line {
     this.lineName = lineName;
     this.stations = listStations;
   }
-
-//  private List<String> station = new ArrayList<>();
-//
-//  public Line(List<String> station) {
-//    this.station = station;
-//  }
-//  public Line() {
-//  }
-//
-//  public List<String> getStation() {
-//    return station;
-//  }
-//
-//  public void add(String station) {
-//    this.station.add(station);
-//  }
 
 //Методы
   public String getLineName() {

@@ -30,7 +30,10 @@ public class Main {
         }
         mskMetro.setLines(lineNumber + " " + element.text(), lineName.getStationList());
         //mskMetro.setLines(lineNumber + " " + element.text(), lineName.getStationList());
+
       }
+      mskMetro.getLines().get(1).getStationList().forEach(System.out::println);
+      mskMetro.getLines().get(0).getSizeInLine();
 
       File file = new File(DATA_FILE);
       try {
@@ -47,6 +50,8 @@ public class Main {
     } catch (IOException e) {
       e.printStackTrace();
     }
+
+
     //Чтение файла и вывод в консоль количество станций на каждой линии.
     System.out.println("........................................................");
 
@@ -54,9 +59,10 @@ public class Main {
 
     MskMetro newMskMetro = parser.parse();
 
+
     //System.out.println(newMskMetro.getLines().get(0).getLineName());
     System.out.println(newMskMetro.getStationsCountInLine());
-    System.out.println(newMskMetro.getLines().size());
+    System.out.println(newMskMetro.getLines().get(1).getLineName());
 
 
     //System.out.println(newMskMetro.getStationsCountInLine("1 Сокольническая линия"));

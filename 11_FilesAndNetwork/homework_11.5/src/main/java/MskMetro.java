@@ -3,12 +3,8 @@ import java.util.List;
 
 public class MskMetro {
   public MskMetro(){}
-//  public MskMetro(){
-//
-//  }
 
-
-  //  private Map<String, List<String>> station = new LinkedHashMap<>();
+//  private Map<String, List<String>> station = new LinkedHashMap<>();
 //
 //  public Map<String, List<String>> getStations() {
 //    return station;
@@ -18,10 +14,6 @@ public class MskMetro {
 //   station.put(lines, stations);
 //  }
   public int getStationsCountInLine(){
-    System.out.println("мы тут");
-    for(Line names: lines){
-      System.out.println(names.getLineName());
-    }
     return lines.size();
   }
 
