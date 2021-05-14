@@ -47,4 +47,12 @@ public class Line {
   public void getSizeInLine(){
     System.out.println(lineName + " содержит " + stations.size() + " станций");
   }
+
+  @Override
+  public String toString() {
+    return "Line{" +
+        "lineName='" + lineName + '\'' +
+        ", stations=" + stations +
+        '}';
+  }
 }

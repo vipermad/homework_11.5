@@ -12,7 +12,6 @@ public class Main {
 
   public static void main(String[] args) {
     try {
-      ObjectMapper objectMapper = new ObjectMapper();
       MskMetro mskMetro = new MskMetro();
 
       Document document = Jsoup.connect("https://www.moscowmap.ru/metro.html#lines").maxBodySize(0)
@@ -24,17 +23,11 @@ public class Main {
         String lineNumber = element.selectFirst("span[data-line]").attr("data-line");
         Element line = root.selectFirst("div[data-depend-set=\"lines-" + lineNumber + "\"]");
         Elements stantions = line.select("a[data-metrost]").select("span[class=\"name\"]");
-        //lineName.setLineName(lineNumber + " " + element.text());
         for (Element stantion : stantions) {
           lineName.addStationInList(stantion.text());
         }
         mskMetro.setLines(lineNumber + " " + element.text(), lineName.getStationList());
-        //mskMetro.setLines(lineNumber + " " + element.text(), lineName.getStationList());
-
       }
-      mskMetro.getLines().get(1).getStationList().forEach(System.out::println);
-      mskMetro.getLines().get(0).getSizeInLine();
-
       File file = new File(DATA_FILE);
       try {
         file.createNewFile();
@@ -51,23 +44,14 @@ public class Main {
       e.printStackTrace();
     }
 
-
     //Чтение файла и вывод в консоль количество станций на каждой линии.
-    System.out.println("........................................................");
 
     GsonParser parser = new GsonParser();
-
-    MskMetro newMskMetro = parser.parse();
-
-
-    //System.out.println(newMskMetro.getLines().get(0).getLineName());
+    MskMetro newMskMetro = parser.parseJSON();
     System.out.println(newMskMetro.getStationsCountInLine());
-    System.out.println(newMskMetro.getLines().get(1).getLineName());
-
-
-    //System.out.println(newMskMetro.getStationsCountInLine("1 Сокольническая линия"));
-
-
+    for (int i = 0; i < newMskMetro.getStationsCountInLine(); i++) {
+      newMskMetro.getLines().get(i).getSizeInLine();
+    }
 
   }
 }
